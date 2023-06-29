@@ -2,13 +2,13 @@ package restservice.pojo.userCreate;
 
 public class CreateReq {
     private String age;
-    private String gender;
+    private Gender gender ;
     private String login;
     private String password;
-    private String role;
+    private Role role;
     private String screenName;
 
-    public CreateReq(String age, String gender, String login, String password, String role, String screenName) {
+    public CreateReq(String age, Gender gender, String login, String password, Role role, String screenName) {
         this.age = age;
         this.gender = gender;
         this.login = login;
@@ -28,11 +28,11 @@ public class CreateReq {
         this.age = age;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -52,11 +52,11 @@ public class CreateReq {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

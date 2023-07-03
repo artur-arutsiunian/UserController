@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 
-public class CreateSupervisorService extends BaseService {
+public class CreateSupervisorService implements BaseService {
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();
     private final ResponseBuilderNegative responseBuilderNeg = new ResponseBuilderNegative();

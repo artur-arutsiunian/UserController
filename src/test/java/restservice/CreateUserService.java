@@ -5,7 +5,7 @@ import restservice.pojo.userCreate.Role;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateUserService extends BaseService {
+public class CreateUserService implements BaseService {
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderForbiddenNegative responseBuilderForbiddenNeg = new ResponseBuilderForbiddenNegative();
 

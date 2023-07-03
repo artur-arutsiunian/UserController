@@ -3,7 +3,10 @@ package restservice.pojo.userCreate;
 import io.restassured.response.Response;
 import restservice.BaseService;
 
-public class CreateReq extends BaseService {
+public class CreateReq implements RequestModel, BaseService{
+
+    RequestBuilder rb = new RequestBuilder();
+
     private String age;
     private Gender gender ;
     private String login;
@@ -71,11 +74,15 @@ public class CreateReq extends BaseService {
         this.screenName = screenName;
     }
 
-    public static CreateReq getCreateDto(){
-        return getCreateDto();
+//    public static CreateReq getCreateReq(String age){
+//        return getCreateDto();
+//    }
+
+    public Response send(){
+        return send(null);
     }
 
-    public Response send(CreateReq cr){
-        return given().get();
+    public Response send(RequestModel rm){
+        return rb.requestSpec.get();
     }
 }

@@ -5,7 +5,7 @@ import restservice.pojo.userPatch.PatchReq;
 import restservice.pojo.userPatch.PatchRes;
 import static io.restassured.RestAssured.given;
 
-public class EditUserService extends BaseService {
+public class EditUserService implements BaseService {
 
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();

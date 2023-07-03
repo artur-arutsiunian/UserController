@@ -1,11 +1,13 @@
 package restservice;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.http.client.methods.RequestBuilder;
+
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateAdminService extends BaseService {
+public class CreateAdminService implements BaseService{
     private final RequestBuilder requestBuilder = new RequestBuilder();
 //    private final RequestEndpointBuilder requestEndpointBuilder = new RequestEndpointBuilder();
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();

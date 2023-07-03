@@ -8,33 +8,31 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-public class  BaseService {
+public interface   BaseService {
 
-    private final RequestSpecification rs;
-
-    public BaseService(RequestSpecification rs) {
-        this.rs = rs;
-    }
-
-    public  RequestSpecification given() {
-        return RestAssured.given().spec(rs)
-                .setBaseUri("http://3.68.165.45")
-                .setBasePath("/player")
-                .setContentType(ContentType.JSON)
-                .addFilter(new AllureRestAssured())
-                .build();
-    }
-}
-//    public static class RequestBuilder {
-
-
-//        public final RequestSpecification requestSpec = new RequestSpecBuilder()
-//                    .setBaseUri("http://3.68.165.45")
-//                    .setBasePath("/player")
-//                    .setContentType(ContentType.JSON)
-//                    .addFilter(new AllureRestAssured())
-//                    .build();
+//    private final RequestSpecification rs;
+//
+//    public BaseService(RequestSpecification rs) {
+//        this.rs = rs;
 //    }
+
+//    public  RequestSpecification given() {
+//        return RestAssured.given()
+//                .setBaseUri("http://3.68.165.45")
+//                .setBasePath("/player")
+//                .setContentType(ContentType.JSON)
+//                .addFilter(new AllureRestAssured())
+//                .build();
+//    }
+//}
+    public static class RequestBuilder {
+        public final RequestSpecification requestSpec = new RequestSpecBuilder()
+                    .setBaseUri("http://3.68.165.45")
+                    .setBasePath("/player")
+                    .setContentType(ContentType.JSON)
+                    .addFilter(new AllureRestAssured())
+                    .build();
+    }
 
 
 

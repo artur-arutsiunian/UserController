@@ -6,7 +6,7 @@ import restservice.pojo.userGet.GetRes;
 
 import static io.restassured.RestAssured.given;
 
-public class GetUserService extends BaseService{
+public class GetUserService implements BaseService{
 
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();

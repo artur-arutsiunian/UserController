@@ -4,7 +4,7 @@ import restservice.pojo.userDelete.DeleteReq;
 import restservice.pojo.userPatch.PatchReq;
 
 import static io.restassured.RestAssured.given;
-public class DeleteUserService extends BaseService{
+public class DeleteUserService implements BaseService{
 
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderDeletePositive responseBuilderDeletePos = new ResponseBuilderDeletePositive();

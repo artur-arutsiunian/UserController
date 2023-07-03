@@ -2,7 +2,7 @@ package restservice;
 
 import static io.restassured.RestAssured.given;
 
-public class GetListUserService extends BaseService{
+public class GetListUserService implements BaseService{
     private final RequestBuilder requestBuilder = new RequestBuilder();
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();
     private final ResponseBuilderNegative responseBuilderNeg = new ResponseBuilderNegative();

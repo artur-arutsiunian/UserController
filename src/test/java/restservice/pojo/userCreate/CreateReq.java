@@ -1,6 +1,9 @@
 package restservice.pojo.userCreate;
 
-public class CreateReq {
+import io.restassured.response.Response;
+import restservice.BaseService;
+
+public class CreateReq extends BaseService {
     private String age;
     private Gender gender ;
     private String login;
@@ -66,5 +69,13 @@ public class CreateReq {
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
+    }
+
+    public static CreateReq getCreateDto(){
+        return getCreateDto();
+    }
+
+    public Response send(CreateReq cr){
+        return given().get();
     }
 }

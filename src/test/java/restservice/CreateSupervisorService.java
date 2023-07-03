@@ -1,9 +1,12 @@
 package restservice;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matchers;
 import restservice.pojo.userCreate.CreateRes;
 import restservice.pojo.userCreate.Gender;
 import restservice.pojo.userCreate.Role;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 
@@ -12,13 +15,15 @@ public class CreateSupervisorService extends BaseService {
     private final ResponseBuilderPositive responseBuilderPos = new ResponseBuilderPositive();
     private final ResponseBuilderNegative responseBuilderNeg = new ResponseBuilderNegative();
     public CreateRes createUserPositive() {
-         return given(requestBuilder.requestSpec)
-                .queryParams("age", "17")
-                .queryParams("gender", Gender.male)
-                .queryParams("login", "JackUser")
-                .queryParams("password", "1234567")
-                .queryParams("role", Role.admin)
-                .queryParams("screenName", "JackScreenName10")
+        Map<String, String> createParamsMap = getCreatePlayerParamsMap("admin");
+        return given(requestBuilder.requestSpec)
+//                .queryParams("age", "17")
+//                .queryParams("gender", Gender.male)
+//                .queryParams("login", "JackUser")
+//                .queryParams("password", "1234567")
+//                .queryParams("role", Role.admin)
+//                .queryParams("screenName", "JackScreenName10")
+                .queryParams(createParamsMap)
                 .when()
                 .get("/create/supervisor")
                 .then()
@@ -194,5 +199,13 @@ public class CreateSupervisorService extends BaseService {
                 .then()
                 .spec(responseBuilderPos.responseSpecPositive)
                 .extract().as(CreateRes.class);
+    }
+
+    private Map<String, String> getCreatePlayerParamsMap(String age, String gender, String login, String password, String screenName, String role){
+        return Map.of("age", age, "gender", gender, "login", login, "password", password, "screenName", screenName, "role", role);
+    }
+
+    private Map<String, String> getCreatePlayerParamsMap(String role){
+        return getCreatePlayerParamsMap("17","male", RandomStringUtils.randomAlphanumeric(5), RandomStringUtils.randomAlphanumeric(7), RandomStringUtils.randomAlphanumeric(5), role);
     }
 }

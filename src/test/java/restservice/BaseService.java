@@ -1,6 +1,7 @@
 package restservice;
 
 import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -8,19 +9,40 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 public class  BaseService {
-    public static class RequestBuilder {
-        public final RequestSpecification requestSpec;
 
-        public RequestBuilder() {
-            this.requestSpec = new RequestSpecBuilder()
-                    .setBaseUri("http://3.68.165.45")
-                    .setBasePath("/player")
-                    .setContentType(ContentType.JSON)
-                    .addFilter(new AllureRestAssured())
-                    .build();
+    private final RequestSpecification rs;
 
-        }
+    public BaseService(RequestSpecification rs) {
+        this.rs = rs;
     }
+
+    public  RequestSpecification given() {
+        return RestAssured.given().spec(rs)
+                .setBaseUri("http://3.68.165.45")
+                .setBasePath("/player")
+                .setContentType(ContentType.JSON)
+                .addFilter(new AllureRestAssured())
+                .build();
+    }
+}
+//    public static class RequestBuilder {
+
+
+//        public final RequestSpecification requestSpec = new RequestSpecBuilder()
+//                    .setBaseUri("http://3.68.165.45")
+//                    .setBasePath("/player")
+//                    .setContentType(ContentType.JSON)
+//                    .addFilter(new AllureRestAssured())
+//                    .build();
+//    }
+
+
+
+//    public static class RequestEndpointBuilder{
+//        public final RequestSpecification requestEndpointSpec = new RequestSpecBuilder()
+//                .setBasePath("/create/admin")
+//                .build();
+//    }
 
     public static class ResponseBuilderPositive{
         public final ResponseSpecification responseSpecPositive;
